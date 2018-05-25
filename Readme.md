@@ -1,10 +1,10 @@
 # foursquare2
 
-Ruby wrapper for the [foursquare v2 API](http://developer.foursquare.com/docs/).
+This ruby wrapper for the [foursquare v2 API](http://developer.foursquare.com/docs/), is a fork of Matt Mueller's version that is maintained and managed by Foursquare employee, Zack Gilbert. It is updated to more closely resemble the current state of the Foursquare API functionality available to the public.
 
 ## Installation
 
-    sudo gem install foursquare2
+    gem 'foursquare2', :git => 'git://github.com/zackgilbert/foursquare2.git'
 
 ## Usage
 
@@ -14,15 +14,11 @@ Currently this gem does not handle the oauth2 authentication flow for you, use t
 
 ### Instantiate a client (Userless Access)
 
-    client = Foursquare2::Client.new(:client_id => 'your_client_id', :client_secret => 'your_secret')
+    client = Foursquare2::Client.new(:client_id => 'your_client_id', :client_secret => 'your_secret', :api_version => '20180525')
 
 ### Instantiate a client (Authenticated User Access)
 
-    client = Foursquare2::Client.new(:oauth_token => 'user_oauth_token')
-
-### Instantiate a client (With versioning)
-
-    client = Foursquare2::Client.new(:api_version => '20120505')
+    client = Foursquare2::Client.new(:oauth_token => 'user_oauth_token', :api_version => '20180525')
 
 ### Examples
 
@@ -66,8 +62,23 @@ See [the documentation](http://rubydoc.info/gems/foursquare2/frames) for a list 
 
 ## Full list of methods
 
-See [the documentation](http://rubydoc.info/gems/foursquare2/frames) or [foursquare's endpoint list](http://developer.foursquare.com/docs/index_docs.html) for parameters.
+See [the documentation](http://rubydoc.info/gems/foursquare2/frames) or [foursquare's endpoint list](https://developer.foursquare.com/docs/api/endpoints) for parameters.
 
+    client.venue
+    client.venue_tips
+    client.venue_links
+    client.venue_photos
+    client.search_venues
+    client.search_venues_by_tip
+    client.venue_categories
+    client.trending_venues
+    client.add_venue
+    client.flag_venue
+    client.propose_venue_edit
+    client.edit_venue
+    client.venues_timeseries
+    client.managed_venues
+    client.managed_venue_stats
     client.checkin
     client.recent_checkins
     client.add_checkin
@@ -80,14 +91,9 @@ See [the documentation](http://rubydoc.info/gems/foursquare2/frames) or [foursqu
     client.settings
     client.setting
     client.update_setting
-    client.special
-    client.search_specials
     client.tip
     client.search_tips
     client.add_tip
-    client.mark_tip_todo
-    client.mark_tip_done
-    client.unmark_tip
     client.user
     client.search_users
     client.user_requests
@@ -104,34 +110,13 @@ See [the documentation](http://rubydoc.info/gems/foursquare2/frames) or [foursqu
     client.user_approve_friend
     client.user_deny_friend
     client.user_set_friend_pings
-    client.venue
-    client.venue_tips
-    client.venue_links
-    client.venue_photos
-    client.page
-    client.search_pages
-    client.herenow
-    client.page_venues
-    client.managed_pages
-    client.search_venues
-    client.search_venues_by_tip
-    client.venue_categories
-    client.trending_venues
-    client.add_venue
-    client.mark_venue_todo
-    client.flag_venue
-    client.propose_venue_edit
-    client.edit_venue
-	client.managed_venues
-    client.managed_venue_stats
-    client.venues_timeseries
-	client.add_special
-	client.add_campaign
 
 ## Todo
 
-* More test coverage
+* Finish updating docs to reflect current state of Foursquare docs
 * Integrate oauth2 authentication flow
+* Example code
+* More test coverage
 
 ## Contributing to foursquare2
 
@@ -145,4 +130,4 @@ See [the documentation](http://rubydoc.info/gems/foursquare2/frames) or [foursqu
 
 ## Copyright
 
-Copyright (c) 2011 Matt Mueller. See LICENSE.txt for further details.
+Copyright (c) 2011-2018 Matt Mueller. See LICENSE.txt for further details.
